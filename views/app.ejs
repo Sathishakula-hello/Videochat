@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LiveChat</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js " defer></script>
+    <script src="/socket.io/socket.io.js" defer></script>
+    <script>
+        var room_id1="<%= room_id %>"
+    </script>
+    <script src="app.js" defer></script>
+    
+
+</head>
+<body style="background:hsl(0, 0%, 92%);">
+     <!-- Data Attributes STATE MANAGEMENT -->
+    <div id="side-bar" data-state="close">
+    <div id="side_bar_div"><p id="side_text">SIDE BAR</p><i class="material-icons" id="icon1" onclick="closeSidebar()" style="background:white;color:black;width:24px;height:24px;cursor:grab;margin-left:70%">visibility</i></div>
+    <div id="d1" style="padding:10px;border: 2px solid black; font-size:20px;"><p id="p1">Message</p><button id="check_message"><i  class="material-icons">message</i></button></div>    
+    </div>
+        
+    <div class="container">
+        <div class="video_part">
+            <h1 class="header"><button id="btn_open"><i class="material-icons">featured_video</i></button>Video part</h1>
+            <div class="video_grid">
+            </div>
+        </div>
+        <div class="message_part">
+            <section class="brand">
+                <button id="btn_close">
+                    <i class="material-icons">message</i>
+                </button>
+                <h1>Messenger</h1>
+            </section>
+            <div class="chat_container">
+                <div class="msg_area">
+                </div>
+                <div class="textarea_box">
+                    <textarea id="textarea" rows="2" placeholder="write a message here"></textarea>
+                    <button value="send" id="send_button"><i class="material-icons">send</i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="options" style="background:hsl(220,80%,60%);">
+        <i class="material-icons" id="show1" onclick="openSidebar()" style="cursor:grab">visibility_off</i>
+        <div id="elements">
+            <i class="material-icons" id="mic" onclick="mute_off()" style="cursor:grab">mic</i>
+            <i class="material-icons" id ="video" onclick="video_off()" style="cursor:grab">videocam</i>
+            </div>
+    </div>
+</body>
+</html>
