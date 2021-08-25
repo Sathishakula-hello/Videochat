@@ -72,7 +72,7 @@ socket.on("user-disconnected",(u,roomId1)=>
     })
 function connectToNewUser(u,stream)
 {   
-    setTimeout(function(){callToNewUser(u,stream)},1000)
+    setTimeout(function(){callToNewUser(u,stream)},300)
 }
 function callToNewUser(u,stream){
     console.log("In call",u)

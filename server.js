@@ -24,9 +24,6 @@ socket2.on("connection",(socket)=>
     {
         socket.room_id_store=roomId;
         socket.user_id_store=user_id;
-        // console.log(roomId,user_id);
-        // console.log("COnnected through room ids")
-        // socket.join(room_id)
         socket.broadcast.emit("user-connected",user_id,socket.room_id_store);
         socket.on("disconnect",()=>
         {
