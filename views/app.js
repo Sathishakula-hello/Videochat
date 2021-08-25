@@ -10,7 +10,7 @@ do{
 }while(!name1);
 const video_grid=document.querySelector(".video_grid");
     //const peer=new Peer(undefined,{host:"/",port:3001})
-    const peer = new Peer({host:'peerjs-server.herokuapp.com', secure:true, port:443})
+    const peer = new Peer(undefined,{host:'peerjs-server.herokuapp.com', secure:true, port:443})
     peer.on("open",(id)=>
     {
         our_user_id=id;
