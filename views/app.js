@@ -52,7 +52,7 @@ const video_grid=document.querySelector(".video_grid");
             if(roomID1==room_id1)
             {
                 console.log("User connected")
-                setTimeout(connectToNewUser,500,u,stream)
+                connectToNewUser(u,stream)
             }
         })
 socket.on("user-disconnected",(u,roomId1)=>
