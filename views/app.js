@@ -100,7 +100,7 @@ function addVideo(video,stream,u)
     video_grid.append(video)
 }
 })
-var text_area=document.querySelector("#textarea");
+const text_area=document.querySelector("#textarea");
 const message_area=document.querySelector(".msg_area");
 const send_button=document.querySelector("#send_button");
 const cls_button=document.querySelector("#btn_close");
@@ -113,7 +113,8 @@ const sideBar = document.getElementById("side-bar");
 const mic=document.querySelector("#mic")
 const video_lol=document.querySelector("#video")
 const check_messages=document.querySelector("#check_message")
-function closeSidebar(){
+function closeSidebar()
+{
     sideBar.setAttribute("data-state","close");
 }
 function openSidebar(){
@@ -172,8 +173,7 @@ var append_msg = (msg,className) =>{
     mainDiv.classList.add(className)
     let markup;
                 markup = `<h3>${msg.user}</h3>
-                <p >${msg.message}</p>`
-      
+                <p >${msg.message}</p>`    
     mainDiv.innerHTML = markup
     msg_area.appendChild(mainDiv)   
 }
