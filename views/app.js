@@ -1,10 +1,9 @@
 var socket=io()
 var name1;
 var our_user_id;
-var arr=[],counter = -1;
 var m = true;
 const peers={}
-var mic_on=true,video_on=true,chat_on=true,myStream;
+var mic_on=true,video_on=true,myStream;
 do{
     name1 = prompt("Enter ur name")
 }while(!name1);
@@ -28,7 +27,7 @@ const video_grid=document.querySelector(".video_grid");
     }).then(stream=>
         {
         myStream=stream
-        addVideo(myVideo,stream,"mine")
+        addVideo(myVideo,stream)
         peer.on('call',call=>
         {
             console.log(call)
@@ -37,14 +36,8 @@ const video_grid=document.querySelector(".video_grid");
             const video_ele=document.createElement("video");
             call.on("stream",userStream=>
             {
-                if(m){
-                    counter++
-                    m = false
-                }
-                else{
-                    m = true
-                }
-                addVideo(video_ele,userStream,arr[counter])
+                
+                addVideo(video_ele,userStream)
             })
         })  
         socket.on("user-connected",(u,roomID1)=>
@@ -80,7 +73,7 @@ function callToNewUser(u,stream){
     const video_ele = document.createElement('video')
     call2.on("stream",userVideoStream=>
     {
-        addVideo(video_ele,userVideoStream,u)
+        addVideo(video_ele,userVideoStream)
     })
     call2.on("close",()=>
     {
@@ -88,11 +81,9 @@ function callToNewUser(u,stream){
     })
     peers[u]=call2;
 }
-function addVideo(video,stream,u)
+function addVideo(video,stream)
 {
     video.srcObject=stream;
-    console.log("Useradd",u)
-    video.setAttribute('id',u)
     video.addEventListener("loadedmetadata",()=>
     {
         video.play()
