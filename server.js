@@ -6,6 +6,7 @@ const uuid=require('uuid');
 var room_id="";
 const server= require("http").Server(app)
 const socket2=require("socket.io")(server)
+app.enable('trust proxy')
 app.use(express.static(path.join(__dirname,"views")))
 app.set("view engine", "ejs")
 app.get("/",(req,res)=>{
