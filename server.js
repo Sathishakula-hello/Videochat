@@ -4,7 +4,7 @@ const app = express();
 const port=process.env.PORT ||3000;
 const uuid=require('uuid');
 var room_id="";
-const server= require("http").Server(app)
+const server= require("http").createServer(app)
 const socket2=require("socket.io")(server)
 app.enable('trust proxy')
 app.use(express.static(path.join(__dirname,"views")))
@@ -15,7 +15,7 @@ app.get("/",(req,res)=>{
 })
 app.get("/:room",(req,res)=>{
      room_id=req.params.room;
-    console.log(room_id)
+    console.log("Room:",room_id)
     res.render("app",{room_id:req.params.room});
 })
 socket2.on("connection",(socket)=>
@@ -36,7 +36,7 @@ socket2.on("connection",(socket)=>
         socket.broadcast.emit("message",msg,socket.room_id_store);
     })
 })
-server.listen(port,"localhost",()=>
+server.listen(port,()=>
 {
     console.log("Listening from port :",port);
 });
